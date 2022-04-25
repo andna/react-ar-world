@@ -20,25 +20,26 @@ const app = express()
 const port = 3000
 
 
-app.get('/island-info', async (req, res) => {
+
+app.get('/island-info', async (req: any, res: any) => {
     try {
         res.setHeader('Access-Control-Allow-Origin', '*');
         res.setHeader('Access-Control-Allow-Methods', 'GET, POST, OPTIONS, PUT, PATCH, DELETE'); // If needed
         res.setHeader('Access-Control-Allow-Headers', 'X-Requested-With,content-type'); // If needed
         res.setHeader('Access-Control-Allow-Credentials', true); // If needed
         const data = await accessSpreadsheet()
-        let toRender = [];
+        let toRender : any = [];
         if (data.rows && data.headerValues) {
-            data.rows.forEach((row) => {
-                let toPush = {};
-                data.headerValues.forEach((header) => {
+            data.rows.forEach((row : any) => {
+                let toPush : any = {};
+                data.headerValues.forEach((header : any) => {
                    toPush[header] = row[header]
                 })
                 toRender.push(toPush);
             })
         }
         res.send(toRender)
-    } catch (e) {
+    } catch (e : any) {
         res.end(e.message || e.toString());
     }
 })
