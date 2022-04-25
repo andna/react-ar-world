@@ -38,7 +38,7 @@ const Box = forwardRef((props, position) => {
 
     useFrame((state, delta) => {
         if(ref && ref.current){
-            ref.current.rotation.y -= 0.003
+            ref.current.rotation.y -= 0.00004
         }
     })
     // Return the view, these are regular Threejs elements expressed in JSX
